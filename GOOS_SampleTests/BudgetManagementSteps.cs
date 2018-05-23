@@ -24,11 +24,13 @@ namespace GOOS_SampleTests
         [Then( @"the following budget will be added" )]
         public void ThenTheFollowingBudgetWillBeAdded( Table table )
         {
-            I.Expect.Url($"{_baseUrl}/Budgets/Index");
+            I.Expect.Url( $"{_baseUrl}/Budgets/Index" );
 
-            I.Expect.Text("2018-05");
-
-            I.Expect.Text("500");
+            for( int i = 0 ; i < table.RowCount ; i++ )
+            {
+                I.Expect.Text( table.Rows[ i ][ "YearMonth" ] );
+                I.Expect.Text( table.Rows[ i ][ "Amount" ] );
+            }
         }
     }
 }

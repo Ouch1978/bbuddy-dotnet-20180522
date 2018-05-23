@@ -5,11 +5,11 @@ using System.Web;
 
 namespace GOOS_Sample.Models
 {
-    public class BudgetService : IBudgetService
+    public class BudgetsService : IBudgetsService
     {
         private IBudgetsRepository _budgetsRepository;
 
-        public BudgetService()
+        public BudgetsService()
         {
             if( _budgetsRepository == null )
             {
@@ -17,7 +17,7 @@ namespace GOOS_Sample.Models
             }
         }
 
-        public BudgetService( IBudgetsRepository budgetsRepository )
+        public BudgetsService( IBudgetsRepository budgetsRepository )
         {
             _budgetsRepository = budgetsRepository;
         }

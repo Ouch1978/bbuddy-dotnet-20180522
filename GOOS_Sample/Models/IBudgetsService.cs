@@ -2,7 +2,7 @@
 
 namespace GOOS_Sample.Models
 {
-    public interface IBudgetService
+    public interface IBudgetsService
     {
         List<Budget> ListAllBudgets();
         bool AddBudget( Budget budget );
