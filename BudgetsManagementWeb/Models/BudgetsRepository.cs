@@ -2,8 +2,8 @@
 
 namespace BudgetsManagementWeb.Models
 {
-    public class BudgetsRepository : IBudgetsRepository
+    public class BudgetsRepository 
     {
-        public IEnumerable<Budget> Budgets { get; internal set; }
+        public virtual IEnumerable<Budget> Budgets { get; internal set; }
     }
 }

@@ -14,7 +14,7 @@ namespace BudgetsManagementWeb.Tests.Services
         public void TestBudgetsCoveredFullMonth()
         {
             //Arrange
-            IBudgetsRepository budgetsRepository = Substitute.For<IBudgetsRepository>();
+            BudgetsRepository budgetsRepository = Substitute.For<BudgetsRepository>();
 
             BudgetsService budgetService = new BudgetsService( budgetsRepository );
 
