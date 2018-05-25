@@ -7,11 +7,11 @@ namespace BudgetsManagementWeb.Services
 {
     public class BudgetsService
     {
-        private IBudgetsRepository _budgetsRepository;
+        private BudgetsRepository _budgetsRepository;
 
         public const string YearMonthFormat = "yyyy-MM";
 
-        public BudgetsService( IBudgetsRepository budgetsRepository )
+        public BudgetsService( BudgetsRepository budgetsRepository )
         {
             this._budgetsRepository = budgetsRepository;
         }

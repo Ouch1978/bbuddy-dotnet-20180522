@@ -167,7 +167,6 @@
     </Compile>
     <Compile Include="Models\Budget.cs" />
     <Compile Include="Models\BudgetsRepository.cs" />
-    <Compile Include="Models\IBudgetsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BudgetsService.cs" />
   </ItemGroup>
