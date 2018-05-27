@@ -32,13 +32,8 @@ namespace BudgetsManagementWeb.Tests.Services
                 dateTo: new DateTime( 2018 , 05 , 31 )
             );
 
-            decimal expected = 310;
-
-            //Action
-            decimal actual = _budgetService.CalculateAvailableBudget( _dateRange );
-
-            //Assertion
-            Assert.AreEqual( expected , actual );
+            //Action & Assertion
+            ActionAndAssert( desiredBudget: 310 );
         }
 
 
@@ -53,13 +48,8 @@ namespace BudgetsManagementWeb.Tests.Services
                 dateTo: new DateTime( 2018 , 05 , 01 )
             );
 
-            decimal expected = 10;
-
-            //Action
-            decimal actual = _budgetService.CalculateAvailableBudget( _dateRange );
-
-            //Assertion
-            Assert.AreEqual( expected , actual );
+            //Action & Assertion
+            ActionAndAssert( desiredBudget: 10 );
         }
 
         [TestMethod]
@@ -73,6 +63,12 @@ namespace BudgetsManagementWeb.Tests.Services
             _budgetsRepository.Budgets.Returns( budgets );
 
             _dateRange = new DateRange( dateFrom , dateTo );
+        }
+        private void ActionAndAssert( decimal desiredBudget )
+        {
+            decimal actual = _budgetService.CalculateAvailableBudget( _dateRange );
+
+            Assert.AreEqual( desiredBudget , actual );
         }
     }
 }
