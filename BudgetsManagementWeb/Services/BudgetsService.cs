@@ -16,13 +16,13 @@ namespace BudgetsManagementWeb.Services
             this._budgetsRepository = budgetsRepository;
         }
 
-        public decimal CalculateAvailableBudget( DateTime dateFrom , DateTime dateTo )
+        public decimal CalculateAvailableBudget( DateRange dateRange )
         {
             List<Budget> budgets = _budgetsRepository.Budgets.Where
             ( b =>
-                ( string.CompareOrdinal( dateTo.ToString( YearMonthFormat ) , b.YearMonth ) >= 0 )
-            &&
-                ( string.CompareOrdinal( b.YearMonth , dateFrom.ToString( YearMonthFormat ) ) >= 0 )
+                ( string.CompareOrdinal( dateRange.DateTo.ToString( YearMonthFormat ) , b.YearMonth ) >= 0 )
+                &&
+                ( string.CompareOrdinal( b.YearMonth , dateRange.DateFrom.ToString( YearMonthFormat ) ) >= 0 )
             ).ToList();
 
             if ( budgets.Count == 1 )
@@ -31,7 +31,7 @@ namespace BudgetsManagementWeb.Services
 
                 DateTime yearMonth = DateTime.ParseExact( budget.YearMonth , YearMonthFormat , null );
 
-                var days = ( dateTo - dateFrom ).Days + 1;
+                var days = dateRange.Days;
 
                 var daysInMonth = DateTime.DaysInMonth( yearMonth.Year , yearMonth.Month );
 
