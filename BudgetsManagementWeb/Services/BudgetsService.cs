@@ -25,9 +25,24 @@ namespace BudgetsManagementWeb.Services
                 ( string.CompareOrdinal( b.YearMonth , dateFrom.ToString( YearMonthFormat ) ) >= 0 )
             ).ToList();
 
-            if(budgets.Count == 1 )
+            if ( budgets.Count == 1 )
             {
-                return budgets.First().Amount;
+                Budget budget = budgets.First();
+
+                DateTime yearMonth = DateTime.ParseExact( budget.YearMonth , YearMonthFormat , null );
+
+                var days = ( dateTo - dateFrom ).Days + 1;
+
+                var daysInMonth = DateTime.DaysInMonth( yearMonth.Year , yearMonth.Month );
+
+                if ( days == daysInMonth )
+                {
+                    return budget.Amount;
+                }
+
+                var budgetPerDay = budget.Amount / daysInMonth;
+
+                return budgetPerDay * days;
             }
 
             return 0;
